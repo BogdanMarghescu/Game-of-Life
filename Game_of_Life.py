@@ -117,7 +117,7 @@ def game_of_life_stabil(nr_pasi,file_in, file_out, read_func):
                 break
         elif (steps==nr_pasi) and (pozitie_configuratie_stabila==-1):
             with open(file_out,'w') as fo:
-                fo.write("No Stable Configuration Found!\n")
+                fo.write("No Stable Configuration Found!\n\n")
                 board_file_write(board,file_out) 
         array_of_boards.append(board)
         board=evolution(board)
@@ -135,6 +135,5 @@ if '-comprimat' in sys.argv:
     read_func=read_file_in_comprimat
 if '-stabil' in sys.argv:
     game_of_life=game_of_life_stabil
-check=file_check(filename_in,filename_out)
-if check:
+if file_check(filename_in,filename_out):
     game_of_life(steps_count,filename_in,filename_out,read_func)
